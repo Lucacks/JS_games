@@ -29,11 +29,26 @@
         }
 
         .timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
             width: 100px;
             height: 100px;
             background-color: green;
+            font-size: 2.3em;
+            color: white;
         }
+    }
+
+    .tie {
+        position: absolute;
+        display: none;
+        font-size: 40px;
+        color: white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 
     canvas {
