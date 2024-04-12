@@ -5,12 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canva Fighter</title>
+    <link rel="stylesheet" href="sass/main.css">
 </head>
 
 <body>
-    <canvas></canvas>
+    <div class="hud-container">
+        <div class="healthbar-container">
+            <div class="healthbar player-health">
+                <div class="hp player-hp"></div>
+            </div>
+            <div class="timer"></div>
+            <div class="healthbar enemy-health">
+                <div class="hp enemy-hp"></div>
+            </div>
+        </div>
+        <canvas></canvas>
+    </div>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
-
-<script src="index.js"></script>

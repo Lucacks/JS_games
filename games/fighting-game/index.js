@@ -26,6 +26,7 @@ class Sprite {
         }
         this.color = color
         this.isAttacking
+        this.health = 100
     }
 
     draw() {
@@ -140,7 +141,8 @@ function animate() {
         rectangle2: enemy
     }) && player.isAttacking) {
         player.isAttacking = false
-        console.log('encostei')
+        enemy.health -= 20
+        document.querySelector('.enemy-hp').style.width = enemy.health + '%'
     }
 
     if (rectangularCollision({
@@ -148,7 +150,8 @@ function animate() {
         rectangle2: player
     }) && enemy.isAttacking) {
         enemy.isAttacking = false
-        console.log('inimigo atacou')
+        player.health -= 20
+        document.querySelector('.player-hp').style.width = player.health + '%'
     }
 }
 

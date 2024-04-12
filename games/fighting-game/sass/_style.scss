@@ -1,0 +1,43 @@
+.hud-container {
+    position: relative;
+    display: inline-block;
+
+    .healthbar-container {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 20px 40px;
+
+        .healthbar {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            background-color: yellow;
+
+            .hp {
+                position: absolute;
+                width: 100%;
+                height: 30px;
+                background-color: rebeccapurple;
+
+                &.player-hp {
+                    right: 0;
+                    left: auto;
+                }
+            }
+        }
+
+        .timer {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    }
+
+    canvas {
+        width: 70vw;
+        height: auto;
+    }
+}
