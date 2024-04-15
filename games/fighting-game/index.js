@@ -36,6 +36,35 @@ const player = new Fighter({
     offset: {
         x: 0,
         y: 0
+    },
+    imageSrc: 'img/samuraiMack/Idle.png',
+    scale: 2.5,
+    maxFrames: 8,
+    offset: {
+        x: 215,
+        y: 157
+    },
+    sprites: {
+        idle: {
+            imageSrc: 'img/samuraiMack/Idle.png',
+            maxFrames: 8
+        },
+        run: {
+            imageSrc: 'img/samuraiMack/Run.png',
+            maxFrames: 8
+        },
+        jump: {
+            imageSrc: 'img/samuraiMack/Jump.png',
+            maxFrames: 2
+        },
+        fall: {
+            imageSrc: 'img/samuraiMack/Fall.png',
+            maxFrames: 2
+        },
+        attack1: {
+            imageSrc: 'img/samuraiMack/Attack1.png',
+            maxFrames: 6
+        }
     }
 })
 
@@ -71,7 +100,7 @@ function animate() {
     backgroundImage.update()
     shopSprite.update()
     player.update()
-    enemy.update()
+    // enemy.update()
 
     player.velocity.x = 0
     enemy.velocity.x = 0
@@ -79,8 +108,19 @@ function animate() {
     // Player Movement
     if (keys.a.pressed && player.lastKey === 'a') {
         player.velocity.x = -5
+        player.switchSprite('run')
     } else if (keys.d.pressed && player.lastKey === 'd') {
         player.velocity.x = 5
+        player.switchSprite('run')
+    } else {
+        player.switchSprite('idle')
+    }
+
+    // Jumping mechanic
+    if (player.velocity.y < 0) {
+        player.switchSprite('jump')
+    } else if (player.velocity.y > 0) {
+        player.switchSprite('fall')
     }
 
     // Enemy Movement
@@ -110,7 +150,6 @@ function animate() {
     }
 
     // End game
-
     if (enemy.health <= 0 || player.health <= 0) {
         determineWinner({ player, enemy, timerId })
     }
